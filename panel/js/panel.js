@@ -1,3 +1,6 @@
+// I'm not a professional, sh!t is probably incredibly inefficient.
+// Please make my code better xqcL
+
 var firstrun = true;
 var authenticated = false;
 var configLoaded = false;
@@ -34,11 +37,14 @@ function readyHandler() {
 
                 if (x.settings.showTwitch) {
                     getChannelEmotes(auth);
-                } if (x.settings.showBTTV) {
+                }
+                if (x.settings.showBTTV) {
                     getBTTVEmotes(auth.channelId);
-                } if (x.settings.showFFZ) {
+                }
+                if (x.settings.showFFZ) {
                     getFFZEmotes(auth.channelId);
-                } if (x.settings.showSevenTV) {
+                }
+                if (x.settings.showSevenTV) {
                     getSevenTVEmotes(auth.channelId);
                 }
 
@@ -56,11 +62,14 @@ function readyHandler() {
 
                 if (x.settings.showTwitch) {
                     getChannelEmotes(auth);
-                } if (x.settings.showBTTV) {
+                }
+                if (x.settings.showBTTV) {
                     getBTTVEmotes(auth.channelId);
-                } if (x.settings.showFFZ) {
+                }
+                if (x.settings.showFFZ) {
                     getFFZEmotes(auth.channelId);
-                } if (x.settings.showSevenTV) {
+                }
+                if (x.settings.showSevenTV) {
                     getSevenTVEmotes(auth.channelId);
                 }
 
