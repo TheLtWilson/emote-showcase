@@ -52,6 +52,10 @@ h2 {
     border-radius: 100%;
 }
 
+#channelPFP {
+    border-radius: 100%;
+}
+
 #emoteList {
     height: 100%;
     overflow-y: auto;

@@ -20,12 +20,9 @@ window.Twitch.ext.onAuthorized(function (data) {
 function readyHandler() {
     if (authenticated && configLoaded) {
         if (firstrun) {
-            console.log(auth)
-
             let defaultConfig = window.Twitch.ext.configuration.global;
             let broadcasterConfig = window.Twitch.ext.configuration.broadcaster;
             if (broadcasterConfig) {
-                console.log('broadcaster config found')
                 let x = JSON.parse(broadcasterConfig.content);
 
                 document.documentElement.style.setProperty("--accent-color", x.style.accentColor);
@@ -50,7 +47,6 @@ function readyHandler() {
 
                 firstrun = false;
             } else {
-                console.log('using default config')
                 let x = JSON.parse(defaultConfig.content);
 
                 document.documentElement.style.setProperty("--accent-color", x.style.accentColor);
@@ -92,12 +88,13 @@ function getExtensionData(auth) {
         })
         .then(res => res.json())
         .then(body => {
+            document.getElementById("channelInfoPFP").src = body.data[0].profile_image_url;
             document.getElementById("channelPFP").src = body.data[0].profile_image_url;
         })
 };
 
 function getChannelEmotes(auth) {
-    document.getElementById("twitchEmotes").classList.remove("hidden");
+    document.getElementById("twitch").classList.remove("hidden");
     fetch(`https://api.twitch.tv/helix/chat/emotes?broadcaster_id=${auth.channelId}`, {
             method: "GET",
             headers: {
@@ -184,7 +181,7 @@ function getChannelEmotes(auth) {
 };
 
 function getBTTVEmotes(id) {
-    document.getElementById("bttvEmotes").classList.remove("hidden");
+    document.getElementById("bttv").classList.remove("hidden");
     fetch(`https://api.betterttv.net/3/cached/users/twitch/${id}`)
         .catch(err => {
             console.error(err);
@@ -236,7 +233,7 @@ function getBTTVEmotes(id) {
 };
 
 function getFFZEmotes(id) {
-    document.getElementById("ffzEmotes").classList.remove("hidden");
+    document.getElementById("ffz").classList.remove("hidden");
     fetch(`https://api.betterttv.net/3/cached/frankerfacez/users/twitch/${id}`)
         .catch(err => {
             console.error(err);
@@ -281,7 +278,7 @@ function getFFZEmotes(id) {
 };
 
 function getSevenTVEmotes(id) {
-    document.getElementById("seventvEmotes").classList.remove("hidden");
+    document.getElementById("seventv").classList.remove("hidden");
     fetch(`https://api.7tv.app/v2/users/${id}/emotes`)
         .catch(err => {
             console.error(err);
