@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Lt. Wilson's Emote Overlay</title>
+    <script src="https://extension-files.twitch.tv/helper/v1/twitch-ext.min.js"></script>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/Navigation-Clean.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body style="background: var(--bs-body-color);height: auto;min-height: auto;">
+    <nav class="navbar navbar-dark navbar-expand-lg bg-dark navigation-clean">
+        <div class="container"><a class="navbar-brand" href="#" style="color: var(--bs-body-bg);">Lt. Wilson's Emote Showcase</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#">Configuration</a></li>
+                    <li class="nav-item"></li>
+                    <li class="nav-item"></li>
+                    <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">Links</a>
+                        <div class="dropdown-menu dropdown-menu-end"><a class="dropdown-item" href="https://streamelements.com/theltwilson/tip" target="_blank">Donate</a><a class="dropdown-item" href="https://github.com/rcwdev/emote-showcase" target="_blank">GitHub</a></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8" style="margin-bottom: 10px;">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">Configure</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="card" style="margin-bottom: 15px;">
+                            <div class="card-header">
+                                <h5 class="mb-0">Settings</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="form-check"><input id="showTwitch" class="form-check-input" type="checkbox" id="formCheck-3"><label class="form-check-label" for="formCheck-3">Show Channel Emotes</label></div>
+                                <div class="form-check"><input id="showBTTV" class="form-check-input" type="checkbox" id="formCheck-4"><label class="form-check-label" for="formCheck-4">Show BetterTTV Emotes</label></div>
+                                <div class="form-check"><input id="showFFZ" class="form-check-input" type="checkbox" id="formCheck-5"><label class="form-check-label" for="formCheck-5">Show FrankerFaceZ Emotes</label></div>
+                                <div class="form-check"><input id="showSevenTV" class="form-check-input" type="checkbox" id="formCheck-6"><label class="form-check-label" for="formCheck-6">Show 7TV Emotes</label></div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="mb-0">Style</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="input-group mb-3"><span class="input-group-text">Accent Color</span><input id="accentColor" type="color" style="height: auto;" class="form-control"></div>
+                                <div class="input-group mb-3"><span class="input-group-text">Background Color</span><input id="backgroundColor" type="color" style="height: auto;" class="form-control"></div>
+                                <div class="input-group mb-3"><span class="input-group-text">Header Font Color</span><input id="headerFontColor" type="color" style="height: auto;" class="form-control"></div>
+                                <div class="input-group mb-3"><span class="input-group-text">Font Color</span><input id="fontColor" type="color" style="height: auto;" class="form-control"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4" style="margin-bottom: 0px;">
+                <div class="card" style="margin-bottom: 15px;">
+                    <div class="card-header">
+                        <h5 class="mb-0">Save Changes</h5>
+                    </div>
+                    <div class="card-body">
+                        <p>Click the "Save Changes" button to save any changes you've made to the panel configuration.</p><button id="saveButton" class="btn btn-primary" type="button" style="margin-right: 5px;">Save Changes</button>
+                    </div>
+                </div>
+                <div id="alertbox" style="display: none;" class="alert alert-success" role="alert"><span id="alertboxtext"></div>
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">Changelog</h5>
+                    </div>
+                    <div class="card-body">
+                        <p>This update features the new configuration panel.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container text-center" style="padding: 12px;">
+        <p style="color: var(--bs-gray);">This project is not affiliated with BetterTTV, FrankerFaceZ, or 7TV.<br>Extension Version 1.0.1 - created by <a href="https://twitch.tv/theltwilson" target="_blank">Lt. Wilson</a>.</p>
+    </div>
+    <!-- Scripts -->
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/config.js"></script>
+</body>
+
+</html>
