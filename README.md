@@ -1,6 +1,6 @@
 # Lt. Wilson's Emote Showcase
 
-[Add the extension to your Twitch page.](https://dashboard.twitch.tv/extensions/z74n08zmes3d4urpt7xvri40ayu8xl-0.0.1)
+[Add the extension to your Twitch page.](https://dashboard.twitch.tv/extensions/z74n08zmes3d4urpt7xvri40ayu8xl)
 
 This is a Twitch extension panel that integrates with first and third party services including Twitch, BetterTTV, FrankerFaceZ, and 7TV.
 
