@@ -25,11 +25,7 @@ function readyHandler() {
             if (broadcasterConfig) {
                 let x = JSON.parse(broadcasterConfig.content);
 
-                document.documentElement.style.setProperty("--accent-color", x.style.accentColor);
-                document.documentElement.style.setProperty("--background-color", x.style.backgroundColor);
-                document.documentElement.style.setProperty("--font-color", x.style.fontColor);
-                document.documentElement.style.setProperty("--header-font-color", x.style.headerFontColor);
-
+                stylePanel(x);
                 getExtensionData(auth);
 
                 if (x.settings.showTwitch) {
@@ -49,11 +45,7 @@ function readyHandler() {
             } else {
                 let x = JSON.parse(defaultConfig.content);
 
-                document.documentElement.style.setProperty("--accent-color", x.style.accentColor);
-                document.documentElement.style.setProperty("--background-color", x.style.backgroundColor);
-                document.documentElement.style.setProperty("--font-color", x.style.fontColor);
-                document.documentElement.style.setProperty("--header-font-color", x.style.headerFontColor);
-
+                stylePanel(x);
                 getExtensionData(auth);
 
                 if (x.settings.showTwitch) {
@@ -75,6 +67,26 @@ function readyHandler() {
     }
 }
 
+function stylePanel(data) {
+    try {
+        if (!data.settings.showHeaderPFP) {
+            document.getElementById("channelHeaderPFP").style.display = 'none';
+            document.getElementById("channelInfo").style.justifyContent = 'center';
+            document.getElementById("channelInfo").style.textAlign = 'center';
+        }
+        if (data.settings.showCustomHeaderText) {
+            if (data.settings.customHeaderText != "") {
+                document.getElementById("channelHeaderText").innerText = data.settings.customHeaderText.toString()
+            }
+        }
+    } finally {
+        document.documentElement.style.setProperty("--accent-color", data.style.accentColor);
+        document.documentElement.style.setProperty("--background-color", data.style.backgroundColor);
+        document.documentElement.style.setProperty("--font-color", data.style.fontColor);
+        document.documentElement.style.setProperty("--header-font-color", data.style.headerFontColor);
+    };
+}
+
 function getExtensionData(auth) {
     fetch(`https://api.twitch.tv/helix/users?id=${auth.channelId}`, {
             method: "GET",
@@ -88,7 +100,7 @@ function getExtensionData(auth) {
         })
         .then(res => res.json())
         .then(body => {
-            document.getElementById("channelInfoPFP").src = body.data[0].profile_image_url;
+            document.getElementById("channelHeaderPFP").src = body.data[0].profile_image_url;
             document.getElementById("channelPFP").src = body.data[0].profile_image_url;
         })
 };

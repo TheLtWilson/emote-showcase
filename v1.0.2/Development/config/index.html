@@ -20,7 +20,7 @@
                     <li class="nav-item"></li>
                     <li class="nav-item"></li>
                     <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">Links</a>
-                        <div class="dropdown-menu dropdown-menu-end"><a class="dropdown-item" href="#">Report an issue</a><a class="dropdown-item" href="#">Donate</a><a class="dropdown-item" href="#">Project GitHub</a></div>
+                        <div class="dropdown-menu dropdown-menu-end"><a class="dropdown-item" href="https://streamelements.com/theltwilson/tip">Donate</a><a class="dropdown-item" href="https://github.com/rcwdev/emote-showcase/">GitHub</a></div>
                     </li>
                 </ul>
             </div>
@@ -39,13 +39,13 @@
                                 <h5 class="mb-0">Settings</h5>
                             </div>
                             <div class="card-body"><strong>Header</strong>
-                                <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-3"><label class="form-check-label" for="formCheck-3">Show Profile Picture in Header</label></div>
-                                <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-2"><label class="form-check-label" for="formCheck-2">Custom Header Text</label></div>
-                                <div class="input-group mb-3"><span class="input-group-text">Header Text</span><input type="text" class="form-control" placeholder="My Emotes"></div><strong>Emote List</strong>
-                                <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label" for="formCheck-1">Show Channel Emotes</label></div>
-                                <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-4"><label class="form-check-label" for="formCheck-4">Show BetterTTV Emotes</label></div>
-                                <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-5"><label class="form-check-label" for="formCheck-5">Show FrankerFaceZ Emotes</label></div>
-                                <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-6"><label class="form-check-label" for="formCheck-6">Show 7TV Emotes</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox" id="showHeaderPFP"><label class="form-check-label" for="showHeaderPFP">Show Profile Picture in Header</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox" id="showCustomHeaderText"><label class="form-check-label" for="showCustomHeaderText">Custom Header Text</label></div>
+                                <div class="input-group mb-3"><span class="input-group-text">Header Text</span><input type="text" maxlength="20" class="form-control" placeholder="My Emotes" id="customHeaderText"></div><strong>Emote List</strong>
+                                <div class="form-check"><input class="form-check-input" type="checkbox" id="showTwitch"><label class="form-check-label" for="showTwitch">Show Channel Emotes</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox" id="showBTTV"><label class="form-check-label" for="showBTTV">Show BetterTTV Emotes</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox" id="showFFZ"><label class="form-check-label" for="showFFZ">Show FrankerFaceZ Emotes</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox" id="showSevenTV"><label class="form-check-label" for="showSevenTV">Show 7TV Emotes</label></div>
                             </div>
                         </div>
                         <div class="card">
@@ -53,10 +53,10 @@
                                 <h5 class="mb-0">Style</h5>
                             </div>
                             <div class="card-body">
-                                <div class="input-group mb-3"><span class="input-group-text">Accent Color</span><input type="color" class="form-control" placeholder="HEX Color" style="height: auto;"></div>
-                                <div class="input-group mb-3"><span class="input-group-text">Background Color</span><input type="color" class="form-control" placeholder="HEX Color" style="height: auto;"></div>
-                                <div class="input-group mb-3"><span class="input-group-text">Header Font Color</span><input type="color" class="form-control" placeholder="HEX Color" style="height: auto;"></div>
-                                <div class="input-group mb-3"><span class="input-group-text">Font Color</span><input type="color" class="form-control" placeholder="HEX Color" style="height: auto;"></div>
+                                <div class="input-group mb-3"><span class="input-group-text">Accent Color</span><input id="accentColor" type="color" class="form-control" placeholder="HEX Color" style="height: auto;"></div>
+                                <div class="input-group mb-3"><span class="input-group-text">Background Color</span><input id="backgroundColor" type="color" class="form-control" placeholder="HEX Color" style="height: auto;"></div>
+                                <div class="input-group mb-3"><span class="input-group-text">Header Font Color</span><input id="fontColor" type="color" class="form-control" placeholder="HEX Color" style="height: auto;"></div>
+                                <div class="input-group mb-3"><span class="input-group-text">Font Color</span><input id="headerFontColor" type="color" class="form-control" placeholder="HEX Color" style="height: auto;"></div>
                             </div>
                         </div>
                     </div>
@@ -68,11 +68,11 @@
                         <h5 class="mb-0">Save Changes</h5>
                     </div>
                     <div class="card-body">
-                        <p>Click the "Save Changes" button to save any changes you've made to the panel configuration. If you've messed up badly somehow, you can also reset to the default configuration.</p><button class="btn btn-primary" type="button" style="margin-right: 5px;margin-bottom: 5px;">Save Changes</button><button class="btn btn-outline-danger" type="button" style="margin-bottom: 5px;">Reset to Default</button>
+                        <p>Click the "Save Changes" button to save any changes you've made to the panel configuration. If you've messed up badly somehow, you can also reset to the default configuration.</p><button id="saveButton" class="btn btn-primary" type="button" style="margin-right: 5px;margin-bottom: 5px;">Save Changes</button><button id="resetButton" class="btn btn-outline-danger" type="button" style="margin-bottom: 5px;">Reset to Default</button>
                         <div class="btn-group" role="group"></div>
                     </div>
                 </div>
-                <div class="alert alert-success" role="alert"><span><strong>Alert</strong> text.</span></div>
+                <div style="display: none;" class="alert alert-success" role="alert" id="alertbox"><span id="alertboxtext"></span></div>
                 <div class="card">
                     <div class="card-header">
                         <h5 class="mb-0">Changelog</h5>
@@ -93,6 +93,7 @@
         <p style="color: var(--bs-gray);">This project is <strong>not </strong>affiliated with BetterTTV, FrankerFaceZ, or 7TV.<br>Extension Version 1.0.2 - created by Lt. Wilson.</p>
     </div>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/config.js"></script>
 </body>
 
 </html>
