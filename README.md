@@ -12,3 +12,7 @@ Includes support for channel follower emotes, subscriber emotes, animated emotes
 ## Development
 
 It is recommended to use the [Twitch Developer Rig](https://dev.twitch.tv/docs/extensions/rig) for some aspects of development, such as modifying extension configuration through Twitch. However, all that is needed to run this project is a web server.
+
+## Release Builds
+
+The completed builds that are/were on Twitch are uploaded after the build has been approved and released.
