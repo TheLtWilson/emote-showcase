@@ -1,0 +1,208 @@
+@font-face { font-family: "Inter"; src: url(../font/Inter.ttf); } @font-face { font-family: "Roobert"; src: url(../font/Roobert-Regular.otf); }
+
+:root {
+    --accent-color: #ff3b3e;
+    --background-color: #1F1F1F;
+    --font-color: #F1F1F1;
+    --header-font-color: #FFFFFF;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    background: var(--background-color);
+    color: var(--font-color);
+    font-family: "Inter", serif;
+    font-weight: 400;
+    text-align: center;
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+h1 {
+    font-family: "Roobert", serif;
+    font-weight: 400;
+    overflow-wrap: anywhere;
+}
+
+h2 {
+    font-family: "Inter", serif;
+    font-weight: 400;
+    font-size: 18px;
+}
+
+a.button {
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    background: var(--background-color);
+    color: var(--font-color);
+    border: solid 1px var(--font-color);
+    border-radius: 10px;
+    font-family: 'Roobert', serif;
+    font-size: 16px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Channel Information */
+
+#channelInfo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    text-align: right;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    box-shadow: 0px 0px 8px black;
+    background: var(--accent-color);
+    color: var(--header-font-color);
+}
+
+#channelInfo h1 {
+    margin: 0;
+}
+
+#channelInfo img {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+}
+
+#channelPFP {
+    border-radius: 100%;
+}
+
+/* Emote List CSS */
+
+#emoteList {
+    height: 100%;
+    overflow-y: auto;
+    margin-top: 5px;
+} 
+
+#emoteList div {
+    margin: 5px;
+}
+
+#emoteList img {
+    padding: 3px;
+    height: auto;
+    max-height: 30px;
+    max-width: 100%;
+}
+
+#emoteList div div.bar {
+    font-weight: 400;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 18px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid var(--accent-color);
+    cursor: pointer;
+}
+
+#emoteList::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#emoteList::-webkit-scrollbar {
+    width: 3px;
+}
+
+#emoteList::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: var(--accent-color);
+}
+
+/* Emote Details */
+
+#emoteDetails {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+    background: rgba(0,0,0,0.8);
+    backdrop-filter: blur(5px);
+    z-index: 1;
+}
+
+#emoteDetails #detailsEmoteName {
+    margin-bottom: 0px;
+    color: white;
+}
+
+#emoteDetails #detailsCreatorName {
+    margin: 0px;
+    font-size: 14px;
+    color: white;
+}
+
+#emoteDetails #detailsImages {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#emoteDetails #detailsImages img#detailsEmote3 {
+    max-height: 112px;
+    max-width: 100%;
+    padding-bottom: 5px;
+}
+
+#emoteDetails #detailsImages img#detailsEmote2 {
+    max-height: 56px;
+    max-width: 100%;
+    padding-bottom: 5px;
+}
+
+#emoteDetails #detailsImages img#detailsEmote1 {
+    max-height: 28px;
+    max-width: 100%;
+    padding-bottom: 5px;
+}
+
+/* Expand and Collapse Arrows */
+
+div.collapse {
+    height: 15px;
+    width: 15px;
+    background-color: var(--font-color);
+    -webkit-mask: url(../img/angle-down.svg) no-repeat center;
+    mask: url(../img/angle-down.svg) no-repeat center;
+}
+
+div.expand {
+    height: 15px;
+    width: 15px;
+    background-color: var(--font-color);
+    -webkit-mask: url(../img/angle-up.svg) no-repeat center;
+    mask: url(../img/angle-up.svg) no-repeat center;
+}
+
+/* General Classes */
+
+.hidden {
+    display: none !important;
+}
