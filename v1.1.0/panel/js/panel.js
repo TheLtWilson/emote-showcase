@@ -230,7 +230,7 @@ function getChannelEmotes(auth) {
 
                                 tippy(x, {
                                     allowHTML: true,
-                                    content: `<img src=${x.src.toString()}><br><b>${emote.name.toString()}</b><br>Click for details.`,
+                                    content: `<img src=${x.src.toString()}><br><b>${emote.name.toString()}</b><br>Follower Emote`,
                                     arrow: true
                                 });
                             });
@@ -249,7 +249,7 @@ function getChannelEmotes(auth) {
 
                                 tippy(x, {
                                     allowHTML: true,
-                                    content: `<img src=${x.src.toString()}><br><b>${emote.name.toString()}</b><br>Click for details.`,
+                                    content: `<img src=${x.src.toString()}><br><b>${emote.name.toString()}</b><br>Tier 1 Emote`,
                                     arrow: true
                                 });
                             });
@@ -268,7 +268,7 @@ function getChannelEmotes(auth) {
 
                                 tippy(x, {
                                     allowHTML: true,
-                                    content: `<img src=${x.src.toString()}><br><b>${emote.name.toString()}</b><br>Click for details.`,
+                                    content: `<img src=${x.src.toString()}><br><b>${emote.name.toString()}</b><br>Tier 2 Emote`,
                                     arrow: true
                                 });
                             });
@@ -287,7 +287,7 @@ function getChannelEmotes(auth) {
 
                                 tippy(x, {
                                     allowHTML: true,
-                                    content: `<img src=${x.src.toString()}><br><b>${emote.name.toString()}</b><br>Click for details.`,
+                                    content: `<img src=${x.src.toString()}><br><b>${emote.name.toString()}</b><br>Tier 3 Emote`,
                                     arrow: true
                                 });
                             });
@@ -305,7 +305,7 @@ function getChannelEmotes(auth) {
 
                                 tippy(x, {
                                     allowHTML: true,
-                                    content: `<img src=${x.src.toString()}><br><b>${emote.name.toString()}</b><br>Click for details.`,
+                                    content: `<img src=${x.src.toString()}><br><b>${emote.name.toString()}</b><br>Bits Reward Emote`,
                                     arrow: true
                                 });
                             });
@@ -324,7 +324,7 @@ function getChannelEmotes(auth) {
 
                                 tippy(x, {
                                     allowHTML: true,
-                                    content: `<img src=${x.src.toString()}><br><b>${emote.name.toString()}</b><br>Click for details.`,
+                                    content: `<img src=${x.src.toString()}><br><b>${emote.name.toString()}</b><br>Animated Emote`,
                                     arrow: true
                                 });
                             });
