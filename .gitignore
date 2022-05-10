@@ -1,4 +1,5 @@
 /*.json
-*/Builds/*
-/Assets
+/builds
+/assets
 *.bsdesign
+*.test.js
