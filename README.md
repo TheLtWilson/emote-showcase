@@ -9,10 +9,20 @@ Includes support for channel follower emotes, subscriber emotes, animated emotes
 
 ###### This project is not affiliated with BetterTTV, FrankerFaceZ, or 7TV - I am not a professional, my code is sloppy and could be better.
 
+## Planned Updates
+
+These are updates of varying priority that are planned to be added. Feel free to open an [enhancement issue](https://github.com/rcwdev/emote-showcase/issues) if you have an idea to enhance the emote panel. Keep in mind, this is project is "maintained" by a single person.
+
+- Stream overlay that displays when an emote has been added, with hopes to support all third-party emote platforms.
+- Ability to toggle icons of emote categories.
+- Ability to display different channel emote types (tier 1, bits, etc.) separately.
+
 ## Development
 
-It is recommended to use the [Twitch Developer Rig](https://dev.twitch.tv/docs/extensions/rig) for some aspects of development, such as modifying extension configuration through Twitch. However, all that is needed to run this project is a web server.
+Make sure you have created an extension in the [Twitch Developer Console](https://dev.twitch.tv/console), it is also recommended to use the [Twitch Developer Rig](https://dev.twitch.tv/docs/extensions/rig) to modify the configuration service that Twitch provides.
+
+All that is needed to run to the panel is an HTTP web server. You also need to make sure that your `Testing Base URI` as well as the relative paths to the panel and configuration's html file.
 
 ## Release Builds
 
-The completed builds that are/were on Twitch are uploaded after the build has been approved and released.
+While almost completely useless to download, these are the exact production builds that are published and approved by Twitch.
