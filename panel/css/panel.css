@@ -41,7 +41,7 @@ a.button {
     margin-block-end: 0.67em;
     margin-inline-start: 0px;
     margin-inline-end: 0px;
-    background: var(--background-color);
+    background: var(--accent-color);
     color: var(--font-color);
     border: solid 1px var(--font-color);
     border-radius: 10px;
