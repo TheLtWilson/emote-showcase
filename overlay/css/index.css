@@ -1,0 +1,44 @@
+:root {
+    --accent-color: #ff3b3e;
+    --background-color: #1F1F1F;
+    --font-color: #F1F1F1;
+    --header-font-color: #FFFFFF;
+}
+
+body {
+    color: white;
+    font-family: sans-serif;
+}
+
+h1 {
+    margin: 0;
+}
+
+p {
+    margin: 0;
+}
+
+div.container {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: space-between;
+}
+
+div.alert {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background: var(--accent-color);
+    color: var(--font-color);
+    border-radius: 5px;
+}
+
+div.alert span {
+    padding-left: 10px;
+}
+
+div.alert img {
+    height: 50px;
+}

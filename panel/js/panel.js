@@ -32,6 +32,12 @@ function stylePanel(data) {
                 document.getElementById("channelHeaderText").innerText = data.settings.customHeaderText.toString()
             }
         }
+        if (data.settings.hideServiceIcons) {
+            document.getElementById('channelPFP').style.display = 'none';
+            document.getElementById('bttv-icon').style.display = 'none';
+            document.getElementById('ffz-icon').style.display = 'none';
+            document.getElementById('seventv-icon').style.display = 'none';
+        }
     // style the panel, will use default config if user config is not present
     } finally {
         document.documentElement.style.setProperty("--accent-color", data.style.accentColor);

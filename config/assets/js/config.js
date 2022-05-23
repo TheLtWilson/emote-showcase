@@ -26,6 +26,7 @@ function getFromElements() {
             showFFZ: document.getElementById("showFFZ").checked,
             showSevenTV: document.getElementById("showSevenTV").checked,
             hideHeader: document.getElementById("hideHeader").checked,
+            hideServiceIcons: document.getElementById("hideServiceIcons").checked,
             showCustomHeaderText: document.getElementById("showCustomHeaderText").checked,
             showHeaderPFP: document.getElementById("showHeaderPFP").checked,
             customHeaderText: checkForNerdsBypassingCharacterLimits
