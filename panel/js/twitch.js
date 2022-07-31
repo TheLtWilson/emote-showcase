@@ -2,6 +2,8 @@ var authenticated = false;
 var auth;
 var displayname;
 var firstrun = true;
+var config;
+var configContent;
 
 function readyHandler() {
     // Only run handler when authenticated and a configuration is loaded.
@@ -12,66 +14,41 @@ function readyHandler() {
             let defaultConfig = window.Twitch.ext.configuration.global;
             let broadcasterConfig = window.Twitch.ext.configuration.broadcaster;
 
-            // If the broadcaster config exists.
+            // If the broadcaster has a config, use it, otherwise use the default one.
             if (broadcasterConfig) {
-                let x = JSON.parse(broadcasterConfig.content);
+                config = broadcasterConfig;
+            } else {
+                config = defaultConfig;
+            };
 
-                // Style the panel using the broadcaster config.
-                stylePanel(x);
-                getExtensionData(auth);
+            configContent = JSON.parse(config.content);
 
-                // If the broadcaster wants to show Twitch Channel emotes, fetch them.
-                if (x.settings.showTwitch) {
-                    getChannelEmotes(auth);
-                }
+            // Style the panel using the broadcaster config.
+            stylePanel(configContent);
+            getExtensionData(auth);
 
-                // If the broadcaster wants to show BTTV emotes, fetch them.
-                if (x.settings.showBTTV) {
-                    getBTTVEmotes(auth.channelId);
-                }
+            // If the broadcaster wants to show Twitch Channel emotes, fetch them.
+            if (configContent.settings.showTwitch) {
+                getChannelEmotes(auth);
+            }
 
-                // If the broadcaster wants to show FFZ emotes, fetch them.
-                if (x.settings.showFFZ) {
-                    getFFZEmotes(auth.channelId);
-                }
+            // If the broadcaster wants to show BTTV emotes, fetch them.
+            if (configContent.settings.showBTTV) {
+                getBTTVEmotes(auth.channelId);
+            }
+
+            // If the broadcaster wants to show FFZ emotes, fetch them.
+            if (configContent.settings.showFFZ) {
+                getFFZEmotes(auth.channelId);
+            }
 
                 // If the broadcaster wants to show 7TV emotes, fetch them.
-                if (x.settings.showSevenTV) {
-                    getSevenTVEmotes(auth.channelId);
-                }
-
-                // It is no longer the first run, thus the handler will not run again.
-                firstrun = false;
-            
-            // Otherwise, use the default config.
-            } else {
-                let x = JSON.parse(defaultConfig.content);
-
-                // Style the panel using the default configuration.
-                stylePanel(x);
-                getExtensionData(auth);
-
-                // Fetch any emotes the default config says to fetch.
-                // (by default, will fetch all)
-                if (x.settings.showTwitch) {
-                    getChannelEmotes(auth);
-                }
-
-                if (x.settings.showBTTV) {
-                    getBTTVEmotes(auth.channelId);
-                }
-
-                if (x.settings.showFFZ) {
-                    getFFZEmotes(auth.channelId);
-                }
-
-                if (x.settings.showSevenTV) {
-                    getSevenTVEmotes(auth.channelId);
-                }
-
-                // It is no longer the first run, thus the handler will not run again.
-                firstrun = false;
+            if (configContent.settings.showSevenTV) {
+                getSevenTVEmotes(auth.channelId);
             }
+
+            // It is no longer the first run, thus the handler will not run again.
+            firstrun = false;
         }
     }
 };
