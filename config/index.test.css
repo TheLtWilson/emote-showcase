@@ -1,0 +1,60 @@
+/* ADD THE FONT HERE */
+
+body {
+    margin: 0;
+    font-family: 'Montserrat', serif;
+    background: #ffc8c8;
+}
+
+header {
+    padding: 2vw;
+    background: linear-gradient(45deg, #ff7878, #c957b0);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header span.links a {
+    transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+    color: black;
+    background: white;
+    padding: 1vw;
+    border-radius: 1vw;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.7vw;
+    margin-right: 0.5vw;
+}
+
+header span.links a:hover {
+    background: black;
+    color: white;
+    box-shadow: 0px 2px 4px rgb(0,0,0,0.5);
+}
+
+header span.links a:last-child {
+    margin-right: 0px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 2.5vw;
+    margin: 0;
+    filter: drop-shadow(0px 2px 6px rgb(0,0,0,0.5));
+}
+
+hr {
+    border: solid 1px black;
+    box-shadow: 0px 2px 6px rgb(0,0,0,0.5);
+    margin-top: 3vw;
+    margin-bottom: 3vw;
+}
+
+div.content {
+    display: flex;
+}
+
+div.content div {
+    width: 50%;
+    padding: 2vw;
+}
