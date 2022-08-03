@@ -6,6 +6,8 @@ body {
     background: #ffc8c8;
 }
 
+/* Header CSS */
+
 header {
     padding: 2vw;
     background: linear-gradient(45deg, #ff7878, #c957b0);
@@ -13,6 +15,10 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+header span.branding p {
+    margin: 0px;
 }
 
 header span.links a {
@@ -37,6 +43,15 @@ header span.links a:last-child {
     margin-right: 0px;
 }
 
+/* Footer CSS */
+
+footer {
+    text-align: center;
+    padding: 2vw;
+}
+
+/* General Elements */
+
 h1, h2, h3, h4, h5, h6 {
     font-size: 2.5vw;
     margin: 0;
@@ -57,4 +72,43 @@ div.content {
 div.content div {
     width: 50%;
     padding: 2vw;
+}
+
+/* Setting Element */
+
+span.setting {
+    margin-top: 1vw;
+    background: #F1F1F1;
+    display: flex;
+    align-items: center;
+    border-radius: 1vw;
+    box-shadow: 0px 2px 6px rgb(0,0,0,0.5);
+}
+
+span.setting span.description {
+    display: flex;
+    flex-direction: column;
+    padding: 1vw;
+}
+
+span.setting span.description label {
+    font-weight: 700;
+    font-size: 1.8vw;
+}
+
+span.setting span.description sub {
+    color: grey;
+    font-size: 1.3vw;
+}
+
+span.setting input[type="color"] {
+    height: 3vw;
+    width: 3vw;
+    margin-left: 2vw;
+}
+
+span.setting input[type="checkbox"] {
+    height: 2vw;
+    width: 2vw;
+    margin-left: 2vw;
 }
