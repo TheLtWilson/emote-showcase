@@ -67,7 +67,9 @@ function getChannelEmotes(auth) {
                             AnimatedEmotes = AnimatedEmotes.sort((a, b) => a.name.localeCompare(b.name));
 
                             FollowerEmotes.forEach(emote => {
-                                let x = createEmote(emote.name, emote.images.url_4x, `twitchEmotes`, `<img src=${emote.images.url_4x}><br><b>${emote.name.toString()}</b><br>Follower Emote`)
+                                document.getElementById("twitchFollowerEmotes").classList.remove("hidden")
+
+                                let x = createEmote(emote.name, emote.images.url_4x, `twitchFollowerEmotes`, `<img src=${emote.images.url_4x}><br><b>${emote.name.toString()}</b><br>Follower Emote`)
 
                                 x.addEventListener("click", () => {
                                     showEmoteDetails(x.alt, x.src, "Follow for Emote", null, true, `Follower emote for: ${displayname}`)
@@ -75,7 +77,9 @@ function getChannelEmotes(auth) {
                             });
 
                             T1Emotes.forEach(emote => {
-                                let x = createEmote(emote.name, emote.images.url_4x, `twitchEmotes`, `<img src=${emote.images.url_4x}><br><b>${emote.name.toString()}</b><br>Tier 1 Emote`)
+                                document.getElementById("twitchT1Emotes").classList.remove("hidden")
+
+                                let x = createEmote(emote.name, emote.images.url_4x, `twitchT1Emotes`, `<img src=${emote.images.url_4x}><br><b>${emote.name.toString()}</b><br>Tier 1 Emote`)
 
                                 x.addEventListener("click", () => {
                                     showEmoteDetails(x.alt, x.src, "Subscribe for Emote", `https://subs.twitch.tv/${displayname}`, false, `Tier 1 emote for: ${displayname}`)
@@ -83,7 +87,9 @@ function getChannelEmotes(auth) {
                             });
 
                             T2Emotes.forEach(emote => {
-                                let x = createEmote(emote.name, emote.images.url_4x, `twitchEmotes`, `<img src=${emote.images.url_4x}><br><b>${emote.name.toString()}</b><br>Tier 2 Emote`)
+                                document.getElementById("twitchT2Emotes").classList.remove("hidden")
+
+                                let x = createEmote(emote.name, emote.images.url_4x, `twitchT2Emotes`, `<img src=${emote.images.url_4x}><br><b>${emote.name.toString()}</b><br>Tier 2 Emote`)
 
                                 x.addEventListener("click", () => {
                                     showEmoteDetails(x.alt, x.src, "Subscribe for Emote", `https://subs.twitch.tv/${displayname}`, false, `Tier 2 emote for: ${displayname}`)
@@ -91,7 +97,9 @@ function getChannelEmotes(auth) {
                             });
 
                             T3Emotes.forEach(emote => {
-                                let x = createEmote(emote.name, emote.images.url_4x, `twitchEmotes`, `<img src=${emote.images.url_4x}><br><b>${emote.name.toString()}</b><br>Tier 3 Emote`)
+                                document.getElementById("twitchT3Emotes").classList.remove("hidden")
+
+                                let x = createEmote(emote.name, emote.images.url_4x, `twitchT3Emotes`, `<img src=${emote.images.url_4x}><br><b>${emote.name.toString()}</b><br>Tier 3 Emote`)
 
                                 x.addEventListener("click", () => {
                                     showEmoteDetails(x.alt, x.src, "Subscribe for Emote", `https://subs.twitch.tv/${displayname}`, false, `Tier 3 emote for: ${displayname}`)
@@ -99,7 +107,9 @@ function getChannelEmotes(auth) {
                             });
 
                             BitsEmotes.forEach(emote => {
-                                let x = createEmote(emote.name, emote.images.url_4x, `twitchEmotes`, `<img src=${emote.images.url_4x}><br><b>${emote.name.toString()}</b><br>Bits Reward Emote`)
+                                document.getElementById("twitchBitsEmote").classList.remove("hidden")
+
+                                let x = createEmote(emote.name, emote.images.url_4x, `twitchBitsEmote`, `<img src=${emote.images.url_4x}><br><b>${emote.name.toString()}</b><br>Bits Reward Emote`)
 
                                 x.addEventListener("click", () => {
                                     showEmoteDetails(x.alt, x.src, "Use Bits for Emote", null, false, `Bits reward emote for: ${displayname}`)
@@ -107,7 +117,9 @@ function getChannelEmotes(auth) {
                             });
 
                             AnimatedEmotes.forEach(emote => {
-                                let x = createEmote(emote.name, `https://static-cdn.jtvnw.net/emoticons/v2/${emote.id}/animated/dark/3.0`, `twitchEmotes`, `<img src="https://static-cdn.jtvnw.net/emoticons/v2/${emote.id}/animated/dark/3.0"><br><b>${emote.name.toString()}</b><br>Animated Emote`)
+                                document.getElementById("twitchAnimatedEmotes").classList.remove("hidden")
+
+                                let x = createEmote(emote.name, `https://static-cdn.jtvnw.net/emoticons/v2/${emote.id}/animated/dark/3.0`, `twitchAnimatedEmotes`, `<img src="https://static-cdn.jtvnw.net/emoticons/v2/${emote.id}/animated/dark/3.0"><br><b>${emote.name.toString()}</b><br>Animated Emote`)
 
                                 x.addEventListener("click", () => {
                                     showEmoteDetails(x.alt, x.src, "Subscribe for Emote", `https://subs.twitch.tv/${displayname}`, false, `Animated emote for: ${displayname}`)
@@ -116,6 +128,7 @@ function getChannelEmotes(auth) {
                         }
                     });
                 } catch (err) {
+                    console.error(err);
                     let x = document.createTextNode("No emotes found.");
                     document.getElementById("twitchEmotes").appendChild(x);
                 }
@@ -167,24 +180,31 @@ function getBTTVEmotes(id) {
 };
 
 function getFFZEmotes(id) {
+    // if this function is called, FFZ is enabled so it shouldn't be hidden
     document.getElementById("ffz").classList.remove("hidden");
+
+    // fetch the channel's FFZ emoteset using the BTTV API (weird, I know)
     fetch(`https://api.betterttv.net/3/cached/frankerfacez/users/twitch/${id}`)
         .catch(err => {
+            // if something goes wrong, log it and display an error
             console.error(err);
             let x = document.createTextNode("Something went wrong.");
             document.getElementById("ffzEmotes").appendChild(x);
         })
         .then(res => res.json())
         .then(body => {
+            // make sure it actually responded with emotes
             if (body.length === 0) {
                 let x = document.createTextNode("No emotes found.");
                 document.getElementById("ffzEmotes").appendChild(x);
             } else {
                 try {
+                    // if it did, sort them alphabetically
                     body = body.sort((a, b) => a.code.localeCompare(b.code));
                     body.forEach(emote => {
                         let src;
 
+                        // not all FFZ emotes include the highest size, so we do this
                         if (!emote.images["4x"]) {
                             if (!emote.images["2x"]) {
                                 src = emote.images["1x"]
@@ -195,13 +215,17 @@ function getFFZEmotes(id) {
                             src = emote.images["4x"]
                         }
 
+                        // create the emote in the panel
                         let x = createEmote(emote.code, src, `ffzEmotes`, `<img src=${src.toString()}><br><b>${emote.code.toString()}</b><br>By: ${emote.user.displayName.toString()}`)
 
+                        // when the emote is clicked, show it's details
                         x.addEventListener("click", () => {
                             showEmoteDetails(x.alt, x.src, "View on FFZ", `https://frankerfacez.com/emoticon/${emote.id}`, false, `Created by: ${emote.user.displayName.toString()}`)
                         })
                     })
                 } catch (err) {
+                    // if something goes wrong while rendering, not my problem
+                    console.log(err)
                     let x = document.createTextNode("No emotes found.");
                     document.getElementById("ffzEmotes").appendChild(x);
                 }
@@ -210,9 +234,13 @@ function getFFZEmotes(id) {
 };
 
 function getSevenTVEmotes(id) {
+    // if this function is called, 7TV is enabled so it shouldn't be hidden
     document.getElementById("seventv").classList.remove("hidden");
+    
+    // fetch the current 7TV emoteset using the user ID 
     fetch(`https://api.7tv.app/v2/users/${id}/emotes`)
         .catch(err => {
+            // if an error occurs, log it and display an error
             console.error(err);
             let x = document.createTextNode("Something went wrong.");
             document.getElementById("seventvEmotes").appendChild(x);
@@ -220,15 +248,22 @@ function getSevenTVEmotes(id) {
         .then(res => res.json())
         .then(body => {
             try {
+                // sort emotes alphabetically
                 body = body.sort((a, b) => a.name.localeCompare(b.name));
+
+                // for every emote in the list
                 body.forEach(emote => {
+                    // create the emote to be displayed in the panel
                     let x = createEmote(emote.name, emote.urls[3][1], `seventvEmotes`, `<img src="${emote.urls[3][1]}"><br><b>${emote.name.toString()}</b><br>By: ${emote.owner.display_name.toString()}`)
 
+                    // when clicked, it will display the details of the emote
                     x.addEventListener("click", () => {
                         showEmoteDetails(x.alt, x.src, "View on 7TV", `https://7tv.app/emotes/${emote.id}`, false, `Created by: ${emote.owner.display_name.toString()}`)
                     })
                 })
             } catch (err) {
+                // if something goes wrong during rendering, just give up lmao
+                console.log(err)
                 let x = document.createTextNode("No emotes found.");
                 document.getElementById("seventvEmotes").appendChild(x);
             }

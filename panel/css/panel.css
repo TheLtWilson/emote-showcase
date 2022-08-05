@@ -1,4 +1,4 @@
-@font-face { font-family: "Inter"; src: url(../font/Inter.ttf); } @font-face { font-family: "Roobert"; src: url(../font/Roobert-Regular.otf); }
+@font-face { font-family: "Inter"; src: url(../../shared/fonts/Inter.ttf); } @font-face { font-family: "Roobert"; src: url(../../shared/fonts/Roobert-Regular.otf); } @font-face { font-family: "Montserrat"; src: url(../../shared/fonts/Montserrat.ttf); }
 
 :root {
     --accent-color: #ff3b3e;
@@ -28,12 +28,26 @@ h1 {
     font-family: "Roobert", serif;
     font-weight: 400;
     overflow-wrap: anywhere;
+    font-size: 10vw;
 }
 
 h2 {
     font-family: "Inter", serif;
     font-weight: 400;
-    font-size: 18px;
+    font-size: 6vw;
+}
+
+h3 {
+    color: var(--font-color);
+    background: var(--accent-color);
+    font-size: 4vw;
+    padding: 2vw;
+    border-radius: 2vw;
+    margin-left: 10vw;
+    margin-right: 10vw;
+    font-family: 'Montserrat', serif;
+    font-weight: 600;
+    box-shadow: 0px 2px 6px rgb(0,0,0,0.5);
 }
 
 a.button {
@@ -67,7 +81,7 @@ a.button {
     padding-right: 10px;
     padding-top: 20px;
     padding-bottom: 20px;
-    box-shadow: 0px 0px 8px black;
+    box-shadow: 0px 2px 8px rgb(0,0,0,0.5);
     background: var(--accent-color);
     color: var(--header-font-color);
 }
@@ -80,6 +94,7 @@ a.button {
     width: 40px;
     height: 40px;
     border-radius: 100%;
+    filter: drop-shadow(0px 2px 6px rgb(0,0,0,0.5))
 }
 
 #channelPFP {
@@ -99,11 +114,17 @@ a.button {
     margin: 5px;
 }
 
+#emoteList div.innerList {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
 #emoteList img {
     padding: 3px;
     height: auto;
     max-height: 30px;
     max-width: 100%;
+    filter: drop-shadow(0px 2px 2px rgb(0,0,0,0.5));
 }
 
 #emoteList div div.bar {
@@ -121,6 +142,7 @@ a.button {
     background: var(--accent-color);
     border-radius: 5px;
     cursor: pointer;
+    box-shadow: 0px 2px 6px rgb(0,0,0,0.5);
 }
 
 #emoteList div div.bar:hover {
@@ -205,7 +227,7 @@ div.collapse {
     height: 15px;
     width: 15px;
     background-color: var(--font-color);
-    -webkit-mask: url(../img/angle-down.svg) no-repeat center;
+    -webkit-mask: url(../../shared/img/angle-down.svg) no-repeat center;
     mask: url(../img/angle-down.svg) no-repeat center;
 }
 
@@ -213,8 +235,8 @@ div.expand {
     height: 15px;
     width: 15px;
     background-color: var(--font-color);
-    -webkit-mask: url(../img/angle-up.svg) no-repeat center;
-    mask: url(../img/angle-up.svg) no-repeat center;
+    -webkit-mask: url(../../shared/img/angle-up.svg) no-repeat center;
+    mask: url(../../shared/img/angle-up.svg) no-repeat center;
 }
 
 /* General Classes */
