@@ -19,6 +19,7 @@
         <span class="links">
             <a href="https://github.com/rcwdev/emote-showcase">GitHub</a>
             <a href="https://streamelements.com/theltwilson/tip">Donate</a>
+            <a href="https://streamelements.com/theltwilson/tip">Changelog</a>
         </span>
     </header>
 
@@ -29,35 +30,35 @@
             <span>
                 <!-- Accent Color -->
                 <span class="setting">
-                    <input id="accentColor" type="color">
                     <span class="description">
                         <label for="accentColor">Accent Color</label>
                         <sub>Changes the accent color of the panel.</sub>
                     </span>
+                    <input id="accentColor" type="color">
                 </span>
                 <!-- Background Color -->
                 <span class="setting">
-                    <input id="backgroundColor" type="color">
                     <span class="description">
                         <label for="backgroundColor">Background Color</label>
                         <sub>Changes the background color of the panel.</sub>
                     </span>
+                    <input id="backgroundColor" type="color">
                 </span>
                 <!-- Font Color -->
                 <span class="setting">
-                    <input id="fontColor" type="color">
                     <span class="description">
                         <label for="fontColor">Font Color</label>
                         <sub>Changes the color of text in the panel.</sub>
                     </span>
+                    <input id="fontColor" type="color">
                 </span>
                 <!-- Header Font Color -->
                 <span class="setting">
-                    <input id="headerFontColor" type="color">
                     <span class="description">
                         <label for="headerFontColor">Header Font Color</label>
                         <sub>Changes the color of text in the header of the panel.</sub>
                     </span>
+                    <input id="headerFontColor" type="color">
                 </span>
             </span>
             <hr>
@@ -66,43 +67,50 @@
             <span>
                 <!-- Show Header PFP -->
                 <span class="setting">
-                    <input id="showHeaderPFP" type="checkbox">
                     <span class="description">
                         <label for="showHeaderPFP">Show Profile Picture In Header</label>
                         <sub>Displays your channel's profile picture in the header.</sub>
                     </span>
+                    <input id="showHeaderPFP" type="checkbox">
                 </span>
                 <!-- Show Custom Header Text -->
                 <span class="setting">
-                    <input id="showCustomHeaderText" type="checkbox">
                     <span class="description">
                         <label for="showCustomHeaderText">Show Custom Header Text</label>
                         <sub>Enable changing the text that displays in the header.</sub>
                     </span>
+                    <input id="showCustomHeaderText" type="checkbox">
+                </span>
+                <!-- Custom Header Text -->
+                <span class="setting text">
+                    <span class="description">
+                        <label for="customHeaderText">Header Text</label>
+                    </span>
+                    <input id="customHeaderText" type="text" maxlength="20" placeholder="My Emotes">
                 </span>
                 <!-- Hide Header -->
                 <span class="setting">
-                    <input id="hideHeader" type="checkbox">
                     <span class="description">
                         <label for="hideHeader">Hide Header</label>
                         <sub>This will hide the header and only display your emotes.</sub>
                     </span>
+                    <input id="hideHeader" type="checkbox">
                 </span>
                 <!-- Hide Service Icons -->
                 <span class="setting">
-                    <input id="hideServiceIcons" type="checkbox">
                     <span class="description">
                         <label for="hideServiceIcons">Hide Service Icons</label>
                         <sub>Hides the icons next to emote providers, like BTTV, FFZ.</sub>
                     </span>
+                    <input id="hideServiceIcons" type="checkbox">
                 </span>
                 <!-- Seperate Channel Emotes Types -->
                 <span class="setting">
-                    <input id="seperateChannelEmoteTypes" type="checkbox">
                     <span class="description">
                         <label for="seperateChannelEmoteTypes">Seperate Channel Emotes Types</label>
                         <sub>Seperates follower, subscriber, and other channel emote types.</sub>
                     </span>
+                    <input id="seperateChannelEmoteTypes" type="checkbox">
                 </span>
             </span>
             <hr>
@@ -111,35 +119,35 @@
             <span>
                 <!-- Show Twitch -->
                 <span class="setting">
-                    <input id="showTwitch" type="checkbox">
                     <span class="description">
                         <label for="showTwitch">Enable Channel Emotes</label>
                         <sub>Shows follower, subscriber, and other emotes in the panel.</sub>
                     </span>
+                    <input id="showTwitch" type="checkbox">
                 </span>
                 <!-- Show BetterTTV -->
                 <span class="setting">
-                    <input id="showBTTV" type="checkbox">
                     <span class="description">
                         <label for="showBTTV">Enable BetterTTV Emotes</label>
                         <sub>Shows third-party emotes from BetterTTV in the panel.</sub>
                     </span>
+                    <input id="showBTTV" type="checkbox">
                 </span>
                 <!-- Show FFZ -->
                 <span class="setting">
-                    <input id="showFFZ" type="checkbox">
                     <span class="description">
                         <label for="showFFZ">Show FrankerFaceZ Emotes</label>
                         <sub>Shows third-party emotes from FrankerFaceZ in the panel.</sub>
                     </span>
+                    <input id="showFFZ" type="checkbox">
                 </span>
                 <!-- Show 7TV -->
                 <span class="setting">
-                    <input id="showSevenTV" type="checkbox">
                     <span class="description">
                         <label for="showSevenTV">Enable 7TV Emotes</label>
                         <sub>Shows third-party emotes from 7TV in the panel.</sub>
                     </span>
+                    <input id="showSevenTV" type="checkbox">
                 </span>
             </span>
         </div>
@@ -152,6 +160,9 @@
     <footer>
         <sub>Created by <a href="https://linktr.ee/ltwilson" target="_blank">Lt. Wilson</a> - not affiliated with BetterTTV, FrankerFaceZ, or 7TV.</sub>
     </footer>
+
+    <!-- Scripts -->
+    <script src="index.test.js"></script>
 </body>
 
 </html>
