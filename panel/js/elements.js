@@ -40,7 +40,11 @@ function showEmoteDetails(name, src, buttonText, buttonLink, isFollow, creatorTe
             document.getElementById('detailsButton').href = buttonLink;
         // If there is no specified link, remove the "href" tag.
         } else {
-            document.getElementById('detailsbutton').removeAttribute('href');
+            try {
+                document.getElementById('detailsbutton').removeAttribute('href');
+            } catch (err) {
+                console.error(err)
+            }
         }
     }
 

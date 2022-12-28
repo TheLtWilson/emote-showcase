@@ -21,6 +21,7 @@ These are updates of varying priority that are planned to be added. Feel free to
 
 - Stream overlay that displays when an emote has been added, with hopes to support all third-party emote platforms.
 - Ability to display different channel emote types (tier 1, bits, etc.) separately.
+- Showcase the attributed creator of specific emotes.
 
 ## 🛠️ Development
 

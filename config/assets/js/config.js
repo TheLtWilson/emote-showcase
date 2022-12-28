@@ -4,9 +4,13 @@
 window.Twitch.ext.configuration.onChanged(() => {
     var global = window.Twitch.ext.configuration.global;
     var broadcaster = window.Twitch.ext.configuration.broadcaster;
+
     showSettings(JSON.parse(global.content));
+    console.log(JSON.parse(global.content));
+
     if (broadcaster) {
         showSettings(JSON.parse(broadcaster.content));
+        console.log(JSON.parse(broadcaster.content));
     }
 })
 
@@ -29,7 +33,8 @@ function getFromElements() {
             hideServiceIcons: document.getElementById("hideServiceIcons").checked,
             showCustomHeaderText: document.getElementById("showCustomHeaderText").checked,
             showHeaderPFP: document.getElementById("showHeaderPFP").checked,
-            customHeaderText: checkForNerdsBypassingCharacterLimits
+            customHeaderText: checkForNerdsBypassingCharacterLimits,
+            separateEmoteTypes: document.getElementById("separateEmoteTypes").checked
         }
     }
 }

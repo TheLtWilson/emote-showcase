@@ -66,10 +66,17 @@ function getChannelEmotes(auth) {
                             BitsEmotes = BitsEmotes.sort((a, b) => a.name.localeCompare(b.name));
                             AnimatedEmotes = AnimatedEmotes.sort((a, b) => a.name.localeCompare(b.name));
 
-                            FollowerEmotes.forEach(emote => {
-                                document.getElementById("twitchFollowerEmotes").classList.remove("hidden")
+                            console.log(FollowerEmotes, T1Emotes, T2Emotes, T3Emotes, BitsEmotes, AnimatedEmotes);
 
-                                let x = createEmote(emote.name, emote.images.url_4x, `twitchFollowerEmotes`, `<img src=${emote.images.url_4x}><br><b>${emote.name.toString()}</b><br>Follower Emote`)
+                            FollowerEmotes.forEach(emote => {
+                                let target = "twitchEmotes";
+
+                                if (configContent.settings.separateEmoteTypes) {
+                                    document.getElementById("twitchFollowerEmotes").classList.remove("hidden");
+                                    target = "twitchFollowerEmotes";
+                                };
+
+                                let x = createEmote(emote.name, emote.images.url_4x, target, `<img src=${emote.images.url_4x}><br><b>${emote.name.toString()}</b><br>Follower Emote`)
 
                                 x.addEventListener("click", () => {
                                     showEmoteDetails(x.alt, x.src, "Follow for Emote", null, true, `Follower emote for: ${displayname}`)
@@ -77,9 +84,14 @@ function getChannelEmotes(auth) {
                             });
 
                             T1Emotes.forEach(emote => {
-                                document.getElementById("twitchT1Emotes").classList.remove("hidden")
+                                let target = "twitchEmotes";
 
-                                let x = createEmote(emote.name, emote.images.url_4x, `twitchT1Emotes`, `<img src=${emote.images.url_4x}><br><b>${emote.name.toString()}</b><br>Tier 1 Emote`)
+                                if (configContent.settings.separateEmoteTypes) {
+                                    document.getElementById("twitchT1Emotes").classList.remove("hidden");
+                                    target = "twitchT1Emotes";
+                                };
+
+                                let x = createEmote(emote.name, emote.images.url_4x, target, `<img src=${emote.images.url_4x}><br><b>${emote.name.toString()}</b><br>Tier 1 Emote`)
 
                                 x.addEventListener("click", () => {
                                     showEmoteDetails(x.alt, x.src, "Subscribe for Emote", `https://subs.twitch.tv/${displayname}`, false, `Tier 1 emote for: ${displayname}`)
@@ -87,9 +99,14 @@ function getChannelEmotes(auth) {
                             });
 
                             T2Emotes.forEach(emote => {
-                                document.getElementById("twitchT2Emotes").classList.remove("hidden")
+                                let target = "twitchEmotes";
 
-                                let x = createEmote(emote.name, emote.images.url_4x, `twitchT2Emotes`, `<img src=${emote.images.url_4x}><br><b>${emote.name.toString()}</b><br>Tier 2 Emote`)
+                                if (configContent.settings.separateEmoteTypes) {
+                                    document.getElementById("twitchT2Emotes").classList.remove("hidden");
+                                    target = "twitchT2Emotes";
+                                };
+
+                                let x = createEmote(emote.name, emote.images.url_4x, target, `<img src=${emote.images.url_4x}><br><b>${emote.name.toString()}</b><br>Tier 2 Emote`)
 
                                 x.addEventListener("click", () => {
                                     showEmoteDetails(x.alt, x.src, "Subscribe for Emote", `https://subs.twitch.tv/${displayname}`, false, `Tier 2 emote for: ${displayname}`)
@@ -97,9 +114,14 @@ function getChannelEmotes(auth) {
                             });
 
                             T3Emotes.forEach(emote => {
-                                document.getElementById("twitchT3Emotes").classList.remove("hidden")
+                                let target = "twitchEmotes";
 
-                                let x = createEmote(emote.name, emote.images.url_4x, `twitchT3Emotes`, `<img src=${emote.images.url_4x}><br><b>${emote.name.toString()}</b><br>Tier 3 Emote`)
+                                if (configContent.settings.separateEmoteTypes) {
+                                    document.getElementById("twitchT3Emotes").classList.remove("hidden");
+                                    target = "twitchT3Emotes";
+                                };
+
+                                let x = createEmote(emote.name, emote.images.url_4x, target, `<img src=${emote.images.url_4x}><br><b>${emote.name.toString()}</b><br>Tier 3 Emote`)
 
                                 x.addEventListener("click", () => {
                                     showEmoteDetails(x.alt, x.src, "Subscribe for Emote", `https://subs.twitch.tv/${displayname}`, false, `Tier 3 emote for: ${displayname}`)
@@ -107,9 +129,14 @@ function getChannelEmotes(auth) {
                             });
 
                             BitsEmotes.forEach(emote => {
-                                document.getElementById("twitchBitsEmote").classList.remove("hidden")
+                                let target = "twitchEmotes";
 
-                                let x = createEmote(emote.name, emote.images.url_4x, `twitchBitsEmote`, `<img src=${emote.images.url_4x}><br><b>${emote.name.toString()}</b><br>Bits Reward Emote`)
+                                if (configContent.settings.separateEmoteTypes) {
+                                    document.getElementById("twitchBitsEmotes").classList.remove("hidden");
+                                    target = "twitchBitsEmotes";
+                                };
+
+                                let x = createEmote(emote.name, emote.images.url_4x, target, `<img src=${emote.images.url_4x}><br><b>${emote.name.toString()}</b><br>Bits Reward Emote`)
 
                                 x.addEventListener("click", () => {
                                     showEmoteDetails(x.alt, x.src, "Use Bits for Emote", null, false, `Bits reward emote for: ${displayname}`)
@@ -117,9 +144,14 @@ function getChannelEmotes(auth) {
                             });
 
                             AnimatedEmotes.forEach(emote => {
-                                document.getElementById("twitchAnimatedEmotes").classList.remove("hidden")
+                                let target = "twitchEmotes";
 
-                                let x = createEmote(emote.name, `https://static-cdn.jtvnw.net/emoticons/v2/${emote.id}/animated/dark/3.0`, `twitchAnimatedEmotes`, `<img src="https://static-cdn.jtvnw.net/emoticons/v2/${emote.id}/animated/dark/3.0"><br><b>${emote.name.toString()}</b><br>Animated Emote`)
+                                if (configContent.settings.separateEmoteTypes) {
+                                    document.getElementById("twitchAnimatedEmotes").classList.remove("hidden");
+                                    target = "twitchAnimatedEmotes";
+                                };
+
+                                let x = createEmote(emote.name, `https://static-cdn.jtvnw.net/emoticons/v2/${emote.id}/animated/dark/3.0`, target, `<img src="https://static-cdn.jtvnw.net/emoticons/v2/${emote.id}/animated/dark/3.0"><br><b>${emote.name.toString()}</b><br>Animated Emote`)
 
                                 x.addEventListener("click", () => {
                                     showEmoteDetails(x.alt, x.src, "Subscribe for Emote", `https://subs.twitch.tv/${displayname}`, false, `Animated emote for: ${displayname}`)
