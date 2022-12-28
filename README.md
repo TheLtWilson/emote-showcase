@@ -12,6 +12,7 @@ Includes support for channel follower emotes, subscriber emotes, animated emotes
 These describe the current feature set of the extension, these will be updated to reflect any planned updates that are added.
 
 - Showcase all emoticons, even from third-party services.
+- Ability to display different channel emote types (tier 1, bits, etc.) separately.
 - Provide basic details pertaining to certain emoticons.
 - Direct link to access and add a third-party emoticon to your channel.
 
@@ -20,7 +21,6 @@ These describe the current feature set of the extension, these will be updated t
 These are updates of varying priority that are planned to be added. Feel free to open an [enhancement issue](https://github.com/rcwdev/emote-showcase/issues) if you have an idea to enhance the emote panel. Keep in mind, this is project is "maintained" by a single person.
 
 - Stream overlay that displays when an emote has been added, with hopes to support all third-party emote platforms.
-- Ability to display different channel emote types (tier 1, bits, etc.) separately.
 - Showcase the attributed creator of specific emotes.
 
 ## 🛠️ Development
