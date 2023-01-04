@@ -21,6 +21,72 @@ document.getElementById("twitch-bar").addEventListener("click", () => {
     }
 })
 
+document.getElementById("twitch-follower-bar").addEventListener("click", () => {
+    // expand and collapse channel emotes on click
+    if (document.getElementById("twitchFollowerEmotes").classList.contains("hidden")) {
+        document.getElementById("twitchFollowerEmotes").classList.remove("hidden")
+        document.getElementById("twitch-follower-collapse").className = "collapse"
+    } else {
+        document.getElementById("twitchFollowerEmotes").classList.add("hidden")
+        document.getElementById("twitch-follower-collapse").className = "expand"
+    }
+})
+
+document.getElementById("twitch-tier-1-bar").addEventListener("click", () => {
+    // expand and collapse channel emotes on click
+    if (document.getElementById("twitchT1Emotes").classList.contains("hidden")) {
+        document.getElementById("twitchT1Emotes").classList.remove("hidden")
+        document.getElementById("twitch-tier-1-collapse").className = "collapse"
+    } else {
+        document.getElementById("twitchT1Emotes").classList.add("hidden")
+        document.getElementById("twitch-tier-1-collapse").className = "expand"
+    }
+})
+
+document.getElementById("twitch-tier-2-bar").addEventListener("click", () => {
+    // expand and collapse channel emotes on click
+    if (document.getElementById("twitchT2Emotes").classList.contains("hidden")) {
+        document.getElementById("twitchT2Emotes").classList.remove("hidden")
+        document.getElementById("twitch-tier-2-collapse").className = "collapse"
+    } else {
+        document.getElementById("twitchT2Emotes").classList.add("hidden")
+        document.getElementById("twitch-tier-2-collapse").className = "expand"
+    }
+})
+
+document.getElementById("twitch-tier-3-bar").addEventListener("click", () => {
+    // expand and collapse channel emotes on click
+    if (document.getElementById("twitchT3Emotes").classList.contains("hidden")) {
+        document.getElementById("twitchT3Emotes").classList.remove("hidden")
+        document.getElementById("twitch-tier-3-collapse").className = "collapse"
+    } else {
+        document.getElementById("twitchT3Emotes").classList.add("hidden")
+        document.getElementById("twitch-tier-3-collapse").className = "expand"
+    }
+})
+
+document.getElementById("twitch-bits-bar").addEventListener("click", () => {
+    // expand and collapse channel emotes on click
+    if (document.getElementById("twitchBitsEmotes").classList.contains("hidden")) {
+        document.getElementById("twitchBitsEmotes").classList.remove("hidden")
+        document.getElementById("twitch-bits-collapse").className = "collapse"
+    } else {
+        document.getElementById("twitchBitsEmotes").classList.add("hidden")
+        document.getElementById("twitch-bits-collapse").className = "expand"
+    }
+})
+
+document.getElementById("twitch-animated-bar").addEventListener("click", () => {
+    // expand and collapse channel emotes on click
+    if (document.getElementById("twitchAnimatedEmotes").classList.contains("hidden")) {
+        document.getElementById("twitchAnimatedEmotes").classList.remove("hidden")
+        document.getElementById("twitch-animated-collapse").className = "collapse"
+    } else {
+        document.getElementById("twitchAnimatedEmotes").classList.add("hidden")
+        document.getElementById("twitch-animated-collapse").className = "expand"
+    }
+})
+
 document.getElementById("bttv-bar").addEventListener("click", () => {
     // expand and collapse bttv emotes on click
     if (document.getElementById("bttvEmotes").classList.contains("hidden")) {

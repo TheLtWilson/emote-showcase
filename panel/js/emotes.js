@@ -14,6 +14,8 @@ function getChannelEmotes(auth) {
         })
         .then(res => res.json())
         .then(body => {
+            console.log("Channel Emotes", body);
+
             if (body.data.length === 0) {
                 let x = document.createTextNode("No emotes found.");
                 document.getElementById("twitchEmotes").appendChild(x);
@@ -66,20 +68,18 @@ function getChannelEmotes(auth) {
                             BitsEmotes = BitsEmotes.sort((a, b) => a.name.localeCompare(b.name));
                             AnimatedEmotes = AnimatedEmotes.sort((a, b) => a.name.localeCompare(b.name));
 
-                            console.log(FollowerEmotes, T1Emotes, T2Emotes, T3Emotes, BitsEmotes, AnimatedEmotes);
-
                             FollowerEmotes.forEach(emote => {
                                 let target = "twitchEmotes";
 
                                 if (configContent.settings.separateEmoteTypes) {
-                                    document.getElementById("twitchFollowerEmotes").classList.remove("hidden");
+                                    document.getElementById("twitch-follower").classList.remove("hidden");
                                     target = "twitchFollowerEmotes";
                                 };
 
                                 let x = createEmote(emote.name, emote.images.url_4x, target, `<img src=${emote.images.url_4x}><br><b>${emote.name.toString()}</b><br>Follower Emote`)
 
                                 x.addEventListener("click", () => {
-                                    showEmoteDetails(x.alt, x.src, "Follow for Emote", null, true, `Follower emote for: ${displayname}`)
+                                    showEmoteDetails(x.alt, x.src, "Follow for Emote", null, `Follower emote for: ${displayname}`, true, false)
                                 });
                             });
 
@@ -87,14 +87,14 @@ function getChannelEmotes(auth) {
                                 let target = "twitchEmotes";
 
                                 if (configContent.settings.separateEmoteTypes) {
-                                    document.getElementById("twitchT1Emotes").classList.remove("hidden");
+                                    document.getElementById("twitch-tier-1").classList.remove("hidden");
                                     target = "twitchT1Emotes";
                                 };
 
                                 let x = createEmote(emote.name, emote.images.url_4x, target, `<img src=${emote.images.url_4x}><br><b>${emote.name.toString()}</b><br>Tier 1 Emote`)
 
                                 x.addEventListener("click", () => {
-                                    showEmoteDetails(x.alt, x.src, "Subscribe for Emote", `https://subs.twitch.tv/${displayname}`, false, `Tier 1 emote for: ${displayname}`)
+                                    showEmoteDetails(x.alt, x.src, "Subscribe for Emote", `https://subs.twitch.tv/${displayname}`, `Tier 1 emote for: ${displayname}`, false, false)
                                 });
                             });
 
@@ -102,14 +102,14 @@ function getChannelEmotes(auth) {
                                 let target = "twitchEmotes";
 
                                 if (configContent.settings.separateEmoteTypes) {
-                                    document.getElementById("twitchT2Emotes").classList.remove("hidden");
+                                    document.getElementById("twitch-tier-2").classList.remove("hidden");
                                     target = "twitchT2Emotes";
                                 };
 
                                 let x = createEmote(emote.name, emote.images.url_4x, target, `<img src=${emote.images.url_4x}><br><b>${emote.name.toString()}</b><br>Tier 2 Emote`)
 
                                 x.addEventListener("click", () => {
-                                    showEmoteDetails(x.alt, x.src, "Subscribe for Emote", `https://subs.twitch.tv/${displayname}`, false, `Tier 2 emote for: ${displayname}`)
+                                    showEmoteDetails(x.alt, x.src, "Subscribe for Emote", `https://subs.twitch.tv/${displayname}`, `Tier 2 emote for: ${displayname}`, false, false)
                                 });
                             });
 
@@ -117,14 +117,14 @@ function getChannelEmotes(auth) {
                                 let target = "twitchEmotes";
 
                                 if (configContent.settings.separateEmoteTypes) {
-                                    document.getElementById("twitchT3Emotes").classList.remove("hidden");
+                                    document.getElementById("twitch-tier-3").classList.remove("hidden");
                                     target = "twitchT3Emotes";
                                 };
 
                                 let x = createEmote(emote.name, emote.images.url_4x, target, `<img src=${emote.images.url_4x}><br><b>${emote.name.toString()}</b><br>Tier 3 Emote`)
 
                                 x.addEventListener("click", () => {
-                                    showEmoteDetails(x.alt, x.src, "Subscribe for Emote", `https://subs.twitch.tv/${displayname}`, false, `Tier 3 emote for: ${displayname}`)
+                                    showEmoteDetails(x.alt, x.src, "Subscribe for Emote", `https://subs.twitch.tv/${displayname}`, `Tier 3 emote for: ${displayname}`, false, false)
                                 });
                             });
 
@@ -132,14 +132,14 @@ function getChannelEmotes(auth) {
                                 let target = "twitchEmotes";
 
                                 if (configContent.settings.separateEmoteTypes) {
-                                    document.getElementById("twitchBitsEmotes").classList.remove("hidden");
+                                    document.getElementById("twitch-bits").classList.remove("hidden");
                                     target = "twitchBitsEmotes";
                                 };
 
                                 let x = createEmote(emote.name, emote.images.url_4x, target, `<img src=${emote.images.url_4x}><br><b>${emote.name.toString()}</b><br>Bits Reward Emote`)
 
                                 x.addEventListener("click", () => {
-                                    showEmoteDetails(x.alt, x.src, "Use Bits for Emote", null, false, `Bits reward emote for: ${displayname}`)
+                                    showEmoteDetails(x.alt, x.src, "Spend Bits for Emote", undefined, `Bits reward emote for: ${displayname}`, false, true)
                                 })
                             });
 
@@ -147,14 +147,14 @@ function getChannelEmotes(auth) {
                                 let target = "twitchEmotes";
 
                                 if (configContent.settings.separateEmoteTypes) {
-                                    document.getElementById("twitchAnimatedEmotes").classList.remove("hidden");
+                                    document.getElementById("twitch-animated").classList.remove("hidden");
                                     target = "twitchAnimatedEmotes";
                                 };
 
                                 let x = createEmote(emote.name, `https://static-cdn.jtvnw.net/emoticons/v2/${emote.id}/animated/dark/3.0`, target, `<img src="https://static-cdn.jtvnw.net/emoticons/v2/${emote.id}/animated/dark/3.0"><br><b>${emote.name.toString()}</b><br>Animated Emote`)
 
                                 x.addEventListener("click", () => {
-                                    showEmoteDetails(x.alt, x.src, "Subscribe for Emote", `https://subs.twitch.tv/${displayname}`, false, `Animated emote for: ${displayname}`)
+                                    showEmoteDetails(x.alt, x.src, "Subscribe for Emote", `https://subs.twitch.tv/${displayname}`, `Animated emote for: ${displayname}`, false, false)
                                 });
                             });
                         }
@@ -190,7 +190,7 @@ function getBTTVEmotes(id) {
                         let x = createEmote(emote.code, `https://cdn.betterttv.net/emote/${emote.id}/3x`, `bttvEmotes`, `<img src="https://cdn.betterttv.net/emote/${emote.id}/3x"><br><b>${emote.code.toString()}</b><br>Channel Emote`)
 
                         x.addEventListener("click", () => {
-                            showEmoteDetails(x.alt, x.src, "View on BTTV", `https://betterttv.com/emotes/${emote.id}`, false, `Created by: ${displayname}`)
+                            showEmoteDetails(x.alt, x.src, "View on BTTV", `https://betterttv.com/emotes/${emote.id}`, `Created by: ${displayname}`, false, false)
                         })
                     });
                 };
@@ -203,7 +203,7 @@ function getBTTVEmotes(id) {
                         let x = createEmote(emote.code, `https://cdn.betterttv.net/emote/${emote.id}/3x`, `bttvEmotes`, `<img src="https://cdn.betterttv.net/emote/${emote.id}/3x"><br><b>${emote.code.toString()}</b><br>By: ${emote.user.displayName.toString()}`)
 
                         x.addEventListener("click", () => {
-                            showEmoteDetails(x.alt, x.src, "View on BTTV", `https://betterttv.com/emotes/${emote.id}`, false, `Created by: ${emote.user.displayName.toString()}`)
+                            showEmoteDetails(x.alt, x.src, "View on BTTV", `https://betterttv.com/emotes/${emote.id}`, `Created by: ${emote.user.displayName.toString()}`, false, false)
                         })
                     })
                 }
@@ -252,12 +252,12 @@ function getFFZEmotes(id) {
 
                         // when the emote is clicked, show it's details
                         x.addEventListener("click", () => {
-                            showEmoteDetails(x.alt, x.src, "View on FFZ", `https://frankerfacez.com/emoticon/${emote.id}`, false, `Created by: ${emote.user.displayName.toString()}`)
+                            showEmoteDetails(x.alt, x.src, "View on FFZ", `https://frankerfacez.com/emoticon/${emote.id}`, `Created by: ${emote.user.displayName.toString()}`, false, false)
                         })
                     })
                 } catch (err) {
                     // if something goes wrong while rendering, not my problem
-                    console.log(err)
+                    console.error(err)
                     let x = document.createTextNode("No emotes found.");
                     document.getElementById("ffzEmotes").appendChild(x);
                 }
@@ -290,12 +290,12 @@ function getSevenTVEmotes(id) {
 
                     // when clicked, it will display the details of the emote
                     x.addEventListener("click", () => {
-                        showEmoteDetails(x.alt, x.src, "View on 7TV", `https://7tv.app/emotes/${emote.id}`, false, `Created by: ${emote.owner.display_name.toString()}`)
+                        showEmoteDetails(x.alt, x.src, "View on 7TV", `https://7tv.app/emotes/${emote.id}`,  `Created by: ${emote.owner.display_name.toString()}`, false, false)
                     })
                 })
             } catch (err) {
                 // if something goes wrong during rendering, just give up lmao
-                console.log(err)
+                console.error(err)
                 let x = document.createTextNode("No emotes found.");
                 document.getElementById("seventvEmotes").appendChild(x);
             }

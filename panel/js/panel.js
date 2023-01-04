@@ -33,16 +33,23 @@ function stylePanel(data) {
             }
         }
         if (data.settings.hideServiceIcons) {
-            document.getElementById('channelPFP').style.display = 'none';
+            let elements = document.getElementsByClassName("sub_badge");
+
+            Array.prototype.forEach.call(elements, (element) => {
+                element.style.display = 'none';
+            });
+
             document.getElementById('bttv-icon').style.display = 'none';
             document.getElementById('ffz-icon').style.display = 'none';
             document.getElementById('seventv-icon').style.display = 'none';
+        }
+        if (data.settings.separateEmoteTypes) {
+            document.getElementById('twitch').style.display = 'none';
         }
     // style the panel, will use default config if user config is not present
     } finally {
         document.documentElement.style.setProperty("--accent-color", data.style.accentColor);
         document.documentElement.style.setProperty("--background-color", data.style.backgroundColor);
         document.documentElement.style.setProperty("--font-color", data.style.fontColor);
-        document.documentElement.style.setProperty("--header-font-color", data.style.headerFontColor);
     };
 }

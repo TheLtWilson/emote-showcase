@@ -15,7 +15,7 @@ function createEmote(name, src, target, tooltip) {
     return mainElement;
 }
 
-function showEmoteDetails(name, src, buttonText, buttonLink, isFollow, creatorText) {
+function showEmoteDetails(name, src, buttonText, buttonLink, creatorText, isFollow, isUseBits) {
     // Set text for detailed emote popup.
     document.getElementById('detailsEmoteName').innerText = name;
     document.getElementById('detailsCreatorName').innerText = creatorText;
@@ -32,6 +32,15 @@ function showEmoteDetails(name, src, buttonText, buttonLink, isFollow, creatorTe
         document.getElementById('detailsButton').removeAttribute('href');
         document.getElementById('detailsButton').addEventListener('click', () => {
             window.Twitch.ext.actions.followChannel(displayname)
+        })
+    // If the emote is a bits reward emote
+    } else if (isUseBits) {
+        // Remove any previous "href" tag and use Twitch's follow feature
+        document.getElementById('detailsButton').removeAttribute('href');
+        document.getElementById('detailsButton').addEventListener('click', () => {
+            if (window.Twitch.ext.features.isBitsEnabled) {
+                window.Twitch.ext.bits.useBits("spend-500-bits")
+            }
         })
     // If the emote is not a follower emote
     } else {

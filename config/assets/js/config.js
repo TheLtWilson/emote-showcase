@@ -21,7 +21,6 @@ function getFromElements() {
         style: {
             accentColor: document.getElementById("accentColor").value,
             backgroundColor: document.getElementById("backgroundColor").value,
-            headerFontColor: document.getElementById("headerFontColor").value,
             fontColor: document.getElementById("fontColor").value
         },
         settings: {

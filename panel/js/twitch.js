@@ -10,6 +10,15 @@ function readyHandler() {
     if (authenticated && configLoaded) {
         // Twitch may update something, so we need to make sure it's the first run.
         if (firstrun) {
+
+            console.log('Running in channel with ID:', auth.channelId);
+
+            // Get product SKUs for Twitch bit integrations
+            window.Twitch.ext.bits.getProducts()
+                .then((products) => {
+                    console.log(products)
+                });
+
             // Set the default config and broadcaster config.
             let defaultConfig = window.Twitch.ext.configuration.global;
             let broadcasterConfig = window.Twitch.ext.configuration.broadcaster;
@@ -66,13 +75,35 @@ function getExtensionData(auth) {
         .catch(err => {
             console.error(err);
         })
-        // convert to readable json string
+        // convert to readable json object
         .then(res => res.json())
         .then(body => {
             // set the name and profile picture of broadcaster
             displayname = body.data[0].display_name;
             document.getElementById("channelHeaderPFP").src = body.data[0].profile_image_url;
-            document.getElementById("channelPFP").src = body.data[0].profile_image_url;
         }
-    )
+    );
+
+    fetch(`https://api.twitch.tv/helix/chat/badges?broadcaster_id=${auth.channelId}`, {
+        method: "GET",
+        headers: {
+            "client-id": auth.clientId,
+            "Authorization": `Extension ${auth.helixToken}`
+        }
+    })
+    // if an error occurs, log it
+    .catch(err => {
+        console.error(err)
+    })
+    // convert to readable json object
+    .then(res => res.json())
+    .then(body => {
+        console.log("Subscriber Badges", body)
+
+        let elements = document.getElementsByClassName("sub_badge");
+
+        Array.prototype.forEach.call(elements, (element) => {
+            element.src = body.data[0].versions[0].image_url_4x
+        })
+    })
 };

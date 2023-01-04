@@ -9,6 +9,7 @@
 </head>
 
 <body>
+    <!-- Emote Details Popup -->
     <div id="emoteDetails" class="hidden">
         <div id="detailsText">
             <h1 id="detailsEmoteName"></h1>
@@ -21,40 +22,75 @@
         </div>
         <a style="z-index: 2" id="detailsButton" target="_blank" class="button">Subscribe for Emote</a>
     </div>
+    <!-- Header Bar -->
     <div id="channelInfo">
         <img id="channelHeaderPFP">
         <h1 id="channelHeaderText">My Emotes</h1>
     </div>
+    <!-- Emote List Starts Here -->
     <div id="emoteList">
         <!-- Twitch Emote Elements -->
         <div id="twitch" class="hidden">
             <div id="twitch-bar" class="bar">
-                <img id="channelPFP" class="category_icon">
+                <img id="channelSubBadge" class="category_icon sub_badge">
                 <h2 style="margin: 0;">Channel Emotes</h2>
                 <div id="twitch-collapse" class="collapse"></div>
             </div>
-            <div id="twitchEmotes">
-                <!-- If enabled, channel emotes will be seperated by type here -->
-                <div id="twitchFollowerEmotes" class="innerList hidden">
-                    <h3>Follower Emotes</h3>
-                </div>
-                <div id="twitchT1Emotes" class="innerList hidden">
-                    <h3>Tier 1 Subscriber Emotes</h3>
-                </div>
-                <div id="twitchT2Emotes" class="innerList hidden">
-                    <h3>Tier 2 Subscriber Emotes</h3>
-                </div>
-                <div id="twitchT3Emotes" class="innerList hidden">
-                    <h3>Tier 3 Subscriber Emotes</h3>
-                </div>
-                <div id="twitchBitsEmotes" class="innerList hidden">
-                    <h3>Bits Reward Emotes</h3>
-                </div>
-                <div id="twitchAnimatedEmotes" class="innerList hidden">
-                    <h3>Animated Emotes</h3>
-                </div>
-                <!-- If not, they will all appear sorted, but not seperated here. -->
+            <div id="twitchEmotes"></div>
+        </div>
+        <!-- Twitch Follower Emotes -->
+        <div id="twitch-follower" class="hidden">
+            <div id="twitch-follower-bar" class="bar">
+                <img id="channelSubBadge" class="category_icon sub_badge">
+                <h2 style="margin: 0;">Follower Emotes</h2>
+                <div id="twitch-follower-collapse" class="collapse"></div>
             </div>
+            <div id="twitchFollowerEmotes"></div>
+        </div>
+        <!-- Twitch Tier 1 Emotes -->
+        <div id="twitch-tier-1" class="hidden">
+            <div id="twitch-tier-1-bar" class="bar">
+                <img id="channelSubBadge" class="category_icon sub_badge">
+                <h2 style="margin: 0;">Tier 1 Emotes</h2>
+                <div id="twitch-tier-1-collapse" class="collapse"></div>
+            </div>
+            <div id="twitchT1Emotes"></div>
+        </div>
+        <!-- Twitch Tier 2 Emotes -->
+        <div id="twitch-tier-2" class="hidden">
+            <div id="twitch-tier-2-bar" class="bar">
+                <img id="channelSubBadge" class="category_icon sub_badge">
+                <h2 style="margin: 0;">Tier 2 Emotes</h2>
+                <div id="twitch-tier-2-collapse" class="collapse"></div>
+            </div>
+            <div id="twitchT2Emotes"></div>
+        </div>
+        <!-- Twitch Tier 3 Emotes -->
+        <div id="twitch-tier-3" class="hidden">
+            <div id="twitch-tier-3-bar" class="bar">
+                <img id="channelSubBadge" class="category_icon sub_badge">
+                <h2 style="margin: 0;">Tier 3 Emotes</h2>
+                <div id="twitch-tier-3-collapse" class="collapse"></div>
+            </div>
+            <div id="twitchT3Emotes"></div>
+        </div>
+        <!-- Twitch Bits Emotes -->
+        <div id="twitch-bits" class="hidden">
+            <div id="twitch-bits-bar" class="bar">
+                <img id="channelSubBadge" class="category_icon sub_badge">
+                <h2 style="margin: 0;">Bits Reward Emotes</h2>
+                <div id="twitch-bits-collapse" class="collapse"></div>
+            </div>
+            <div id="twitchBitsEmotes"></div>
+        </div>
+        <!-- Twitch Animated Emotes -->
+        <div id="twitch-animated" class="hidden">
+            <div id="twitch-animated-bar" class="bar">
+                <img id="channelSubBadge" class="category_icon sub_badge">
+                <h2 style="margin: 0;">Animated Emotes</h2>
+                <div id="twitch-animated-collapse" class="collapse"></div>
+            </div>
+            <div id="twitchAnimatedEmotes"></div>
         </div>
         <!-- BTTV Emote Elements -->
         <div id="bttv" class="hidden">
