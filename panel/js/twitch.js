@@ -98,12 +98,25 @@ function getExtensionData(auth) {
     // convert to readable json object
     .then(res => res.json())
     .then(body => {
-        console.log("Subscriber Badges", body)
-
+        console.log("Channel Badges", body)
         let elements = document.getElementsByClassName("sub_badge");
 
-        Array.prototype.forEach.call(elements, (element) => {
-            element.src = body.data[0].versions[0].image_url_4x
-        })
+        // check if the channel has badges
+        if (body.data[0]) {
+            // if it does, find the subscriber badges
+            body.data.forEach(list => {
+                if (list.set_id == "subscriber") {
+                    // set all elements using the sub badge to the lowest sub badge
+                    Array.prototype.forEach.call(elements, (element) => {
+                        element.src = list.versions[0].image_url_4x
+                    })
+                }
+            })
+        } else {
+            // if it doesn't, use the default badge
+            Array.prototype.forEach.call(elements, (element) => {
+                element.src = "https://static-cdn.jtvnw.net/badges/v1/5d9f2208-5dd8-11e7-8513-2ff4adfae661/3"
+            })
+        }
     })
 };
