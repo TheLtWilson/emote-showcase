@@ -139,7 +139,7 @@ function getChannelEmotes(auth) {
                                 let x = createEmote(emote.name, emote.images.url_4x, target, `<img src=${emote.images.url_4x}><br><b>${emote.name.toString()}</b><br>Bits Reward Emote`)
 
                                 x.addEventListener("click", () => {
-                                    showEmoteDetails(x.alt, x.src, "Spend Bits for Emote", undefined, `Bits reward emote for: ${displayname}`, false, true)
+                                    showEmoteDetails(x.alt, x.src, "Use Bits for Emote", undefined, `Bits reward emote for: ${displayname}`, false, true)
                                 })
                             });
 
