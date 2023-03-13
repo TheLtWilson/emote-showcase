@@ -25,7 +25,7 @@ These are updates of varying priority that are planned to be added. Feel free to
 
 ## 🛠️ Development
 
-Make sure you have created an extension in the [Twitch Developer Console](https://dev.twitch.tv/console), it is also recommended to use the [Twitch Developer Rig](https://dev.twitch.tv/docs/extensions/rig) to modify the configuration service that Twitch provides.
+Make sure you have created an extension in the [Twitch Developer Console](https://dev.twitch.tv/console) - do **NOT** use the Twitch Developer Rig, it has been deprecated and will not function properly anymore.
 
 All that is needed to run to the panel is an HTTP web server. You also need to make sure that your `Testing Base URI` as well as the relative paths to the panel and configuration's html file are set correctly.
 
