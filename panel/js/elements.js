@@ -52,7 +52,7 @@ function showEmoteDetails(name, src, buttonText, buttonLink, creatorText, isFoll
             try {
                 document.getElementById('detailsbutton').removeAttribute('href');
             } catch (err) {
-                console.error(err)
+                extensionLog("error", "elements", err)
             }
         }
     }

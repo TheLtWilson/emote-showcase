@@ -11,12 +11,12 @@ function readyHandler() {
         // Twitch may update something, so we need to make sure it's the first run.
         if (firstrun) {
 
-            console.log('Running in channel with ID:', auth.channelId);
+            extensionLog("log", "twitch", `Running in channel with ID: ${auth.channelId}`);
 
             // Get product SKUs for Twitch bit integrations
             window.Twitch.ext.bits.getProducts()
                 .then((products) => {
-                    console.log(products)
+                    extensionLog("log", "twitch", "Available Extension Products:", products)
                 });
 
             // Set the default config and broadcaster config.
@@ -73,7 +73,7 @@ function getExtensionData(auth) {
         })
         // if an error occurs, log it
         .catch(err => {
-            console.error(err);
+            extensionLog("error", "twitch", err)
         })
         // convert to readable json object
         .then(res => res.json())
@@ -93,12 +93,12 @@ function getExtensionData(auth) {
     })
     // if an error occurs, log it
     .catch(err => {
-        console.error(err)
+        extensionLog("error", "twitch", err)
     })
     // convert to readable json object
     .then(res => res.json())
     .then(body => {
-        console.log("Channel Badges", body)
+        extensionLog("log", "twitch", "Channel Badges:", body)
         let elements = document.getElementsByClassName("sub_badge");
 
         // check if the channel has badges
