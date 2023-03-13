@@ -1,3 +1,4 @@
+// Twitch Channel Emotes
 function getChannelEmotes(auth) {
     document.getElementById("twitch").classList.remove("hidden");
     fetch(`https://api.twitch.tv/helix/chat/emotes?broadcaster_id=${auth.channelId}`, {
@@ -8,13 +9,13 @@ function getChannelEmotes(auth) {
             }
         })
         .catch(err => {
-            console.error(err);
+            extensionLog("error", "emotes", err)
             let x = document.createTextNode("Something went wrong.");
             document.getElementById("twitchEmotes").appendChild(x);
         })
         .then(res => res.json())
         .then(body => {
-            console.log("Channel Emotes", body);
+            extensionLog("log", "emotes", "Channel Emotes:", body)
 
             if (body.data.length === 0) {
                 let x = document.createTextNode("No emotes found.");
@@ -160,7 +161,7 @@ function getChannelEmotes(auth) {
                         }
                     });
                 } catch (err) {
-                    console.error(err);
+                    extensionLog("error", "emotes", err)
                     let x = document.createTextNode("No emotes found.");
                     document.getElementById("twitchEmotes").appendChild(x);
                 }
@@ -168,20 +169,27 @@ function getChannelEmotes(auth) {
         })
 };
 
+// BTTV Emotes
 function getBTTVEmotes(id) {
     document.getElementById("bttv").classList.remove("hidden");
     fetch(`https://api.betterttv.net/3/cached/users/twitch/${id}`)
         .catch(err => {
-            console.error(err);
+            extensionLog("error", "emotes", err)
             let x = document.createTextNode("Something went wrong.");
             document.getElementById("bttvEmotes").appendChild(x);
         })
         .then(res => res.json())
         .then(body => {
-            if (!body.channelEmotes && !body.sharedEmotes) {
+            // log the channel BTTV emotes
+            extensionLog("log", "emotes", "Channel BTTV Emotes:", body);
+
+            // if neither channel or shared emotes exist
+            if ((!body.channelEmotes && !body.sharedEmotes) || (body.channelEmotes.length === 0 && body.sharedEmotes.length === 0)) {
                 let x = document.createTextNode("No emotes found.");
                 document.getElementById("bttvEmotes").appendChild(x);
+            // if one of them exist
             } else {
+                // if channel emotes exist, render them
                 if (!body.channelEmotes) {
                     return;
                 } else {
@@ -195,6 +203,7 @@ function getBTTVEmotes(id) {
                     });
                 };
 
+                // if shared emotes exist, render them as well
                 if (!body.sharedEmotes) {
                     return;
                 } else {
@@ -211,60 +220,83 @@ function getBTTVEmotes(id) {
         })
 };
 
+// FFZ Emotes
 function getFFZEmotes(id) {
     // if this function is called, FFZ is enabled so it shouldn't be hidden
     document.getElementById("ffz").classList.remove("hidden");
 
     // fetch the channel's FFZ emoteset using the BTTV API (weird, I know)
-    fetch(`https://api.betterttv.net/3/cached/frankerfacez/users/twitch/${id}`)
+    fetch(`https://api.frankerfacez.com/v1/room/id/${id}`)
         .catch(err => {
             // if something goes wrong, log it and display an error
-            console.error(err);
+            extensionLog("error", "emotes", err)
             let x = document.createTextNode("Something went wrong.");
             document.getElementById("ffzEmotes").appendChild(x);
         })
         .then(res => res.json())
         .then(body => {
+            // log the channel FFZ emotes
+            extensionLog("log", "emotes", "Channel FFZ Data:", body)
+            
             // make sure it actually responded with emotes
-            if (body.length === 0) {
+            let emoteSetId = body.room.set;
+            let emoteList = body.sets[emoteSetId].emoticons;
+
+            if (emoteList.length === 0) {
                 let x = document.createTextNode("No emotes found.");
                 document.getElementById("ffzEmotes").appendChild(x);
             } else {
                 try {
                     // if it did, sort them alphabetically
-                    body = body.sort((a, b) => a.code.localeCompare(b.code));
-                    body.forEach(emote => {
+                    emoteList = emoteList.sort((a, b) => a.name.localeCompare(b.name));
+                    emoteList.forEach(emote => {
                         let src;
 
-                        // not all FFZ emotes include the highest size, so we do this
-                        if (!emote.images["4x"]) {
-                            if (!emote.images["2x"]) {
-                                src = emote.images["1x"]
+                        // check if the emote is animated
+                        if (emote.animated) {
+                            // not all FFZ emotes include the highest size, so we do this
+                            if (!emote.animated[4]) {
+                                if (!emote.animated[2]) {
+                                    src = emote.animated[1]
+                                } else {
+                                    src = emote.animated[2]
+                                }
                             } else {
-                                src = emote.images["2x"]
-                            }
+                                src = emote.animated[4]
+                            } 
+                        // if the image is not animated
                         } else {
-                            src = emote.images["4x"]
+                            // not all FFZ emotes include the highest size, so we do this
+                            if (!emote.urls[4]) {
+                                if (!emote.urls[2]) {
+                                    src = emote.urls[1]
+                                } else {
+                                    src = emote.urls[2]
+                                }
+                            } else {
+                                src = emote.urls[4]
+                            }
                         }
 
                         // create the emote in the panel
-                        let x = createEmote(emote.code, src, `ffzEmotes`, `<img src=${src.toString()}><br><b>${emote.code.toString()}</b><br>By: ${emote.user.displayName.toString()}`)
+                        let x = createEmote(emote.code, src, `ffzEmotes`, `<img src=${src.toString()}><br><b>${emote.name.toString()}</b><br>By: ${emote.owner.display_name.toString()}`)
 
                         // when the emote is clicked, show it's details
                         x.addEventListener("click", () => {
-                            showEmoteDetails(x.alt, x.src, "View on FFZ", `https://frankerfacez.com/emoticon/${emote.id}`, `Created by: ${emote.user.displayName.toString()}`, false, false)
+                            showEmoteDetails(x.alt, x.src, "View on FFZ", `https://frankerfacez.com/emoticon/${emote.id}`, `Created by: ${emote.owner.display_name.toString()}`, false, false)
                         })
                     })
                 } catch (err) {
                     // if something goes wrong while rendering, not my problem
-                    console.error(err)
-                    let x = document.createTextNode("No emotes found.");
+                    extensionLog("error", "emotes", err)
+                    let x = document.createTextNode("Something went wrong.");
                     document.getElementById("ffzEmotes").appendChild(x);
                 }
             }
         })
 };
 
+// 7TV Emotes
 function getSevenTVEmotes(id) {
     // if this function is called, 7TV is enabled so it shouldn't be hidden
     document.getElementById("seventv").classList.remove("hidden");
@@ -273,12 +305,15 @@ function getSevenTVEmotes(id) {
     fetch(`https://api.7tv.app/v2/users/${id}/emotes`)
         .catch(err => {
             // if an error occurs, log it and display an error
-            console.error(err);
+            extensionLog("error", "emotes", err)
             let x = document.createTextNode("Something went wrong.");
             document.getElementById("seventvEmotes").appendChild(x);
         })
         .then(res => res.json())
         .then(body => {
+            // log the channel 7TV emotes
+            extensionLog("log", "emotes", "Channel 7TV Emotes:", body)
+
             try {
                 // sort emotes alphabetically
                 body = body.sort((a, b) => a.name.localeCompare(b.name));
@@ -295,8 +330,8 @@ function getSevenTVEmotes(id) {
                 })
             } catch (err) {
                 // if something goes wrong during rendering, just give up lmao
-                console.error(err)
-                let x = document.createTextNode("No emotes found.");
+                extensionLog("error", "emotes", err)
+                let x = document.createTextNode("Something went wrong.");
                 document.getElementById("seventvEmotes").appendChild(x);
             }
         })
