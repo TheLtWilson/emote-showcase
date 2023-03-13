@@ -15,6 +15,20 @@ window.Twitch.ext.onAuthorized((data) => {
     readyHandler();
 });
 
+function extensionLog(type, module, message, object) {
+    switch (type) {
+        case "log":
+            console.log(`%c[SHOWCASE] %c[${module.toString().toUpperCase()}] %c${message}`, "color: #fc03cf;", "color: #2e82ff;", "color: white;", object)
+            break;
+        case "error":
+            console.error(`%c[SHOWCASE] %c[${module.toString().toUpperCase()}] %c${message}`, "color: #fc03cf;", "color: #2e82ff;", "color: white;", object)
+        case "warn":
+            console.warn(`%c[SHOWCASE] %c[${module.toString().toUpperCase()}] %c${message}`, "color: #fc03cf;", "color: #2e82ff;", "color: white;", object)
+        default:
+            break;
+    }
+}
+
 function stylePanel(data) {
     // attempts to set custom settings
     try {
