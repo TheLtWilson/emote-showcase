@@ -225,7 +225,7 @@ function getFFZEmotes(id) {
     // if this function is called, FFZ is enabled so it shouldn't be hidden
     document.getElementById("ffz").classList.remove("hidden");
 
-    // fetch the channel's FFZ emoteset using the BTTV API (weird, I know)
+    // fetch the channel's FFZ emoteset using their API endpoint
     fetch(`https://api.frankerfacez.com/v1/room/id/${id}`)
         .catch(err => {
             // if something goes wrong, log it and display an error
