@@ -279,7 +279,7 @@ function getFFZEmotes(id) {
                         }
 
                         // create the emote in the panel
-                        let x = createEmote(emote.code, src, `ffzEmotes`, `<img src=${src.toString()}><br><b>${emote.name.toString()}</b><br>By: ${emote.owner.display_name.toString()}`)
+                        let x = createEmote(emote.name, src, `ffzEmotes`, `<img src=${src.toString()}><br><b>${emote.name.toString()}</b><br>By: ${emote.owner.display_name.toString()}`)
 
                         // when the emote is clicked, show it's details
                         x.addEventListener("click", () => {
