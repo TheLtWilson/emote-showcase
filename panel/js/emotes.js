@@ -302,7 +302,7 @@ function getSevenTVEmotes(id) {
     document.getElementById("seventv").classList.remove("hidden");
     
     // fetch the current 7TV emoteset using the user ID 
-    fetch(`https://api.7tv.app/v2/users/${id}/emotes`)
+    fetch(`https://7tv.io/v3/users/twitch/${id}`)
         .catch(err => {
             // if an error occurs, log it and display an error
             extensionLog("error", "emotes", err)
@@ -316,16 +316,17 @@ function getSevenTVEmotes(id) {
 
             try {
                 // sort emotes alphabetically
-                body = body.sort((a, b) => a.name.localeCompare(b.name));
+                emotes = body.emote_set.emotes.sort((a, b) => a.name.localeCompare(b.name));
 
                 // for every emote in the list
-                body.forEach(emote => {
+                emotes.forEach(emote => {
                     // create the emote to be displayed in the panel
-                    let x = createEmote(emote.name, emote.urls[3][1], `seventvEmotes`, `<img src="${emote.urls[3][1]}"><br><b>${emote.name.toString()}</b><br>By: ${emote.owner.display_name.toString()}`)
+                    let cdnURL = emote.data.host.url + "/" + emote.data.host.files[7].name;
+                    let x = createEmote(emote.name, cdnURL, `seventvEmotes`, `<img src="${cdnURL}"><br><b>${emote.name.toString()}</b><br>By: ${emote.data.owner.display_name.toString()}`)
 
                     // when clicked, it will display the details of the emote
                     x.addEventListener("click", () => {
-                        showEmoteDetails(x.alt, x.src, "View on 7TV", `https://7tv.app/emotes/${emote.id}`,  `Created by: ${emote.owner.display_name.toString()}`, false, false)
+                        showEmoteDetails(x.alt, x.src, "View on 7TV", `https://7tv.app/emotes/${emote.id}`,  `Created by: ${emote.data.owner.display_name.toString()}`, false, false)
                     })
                 })
             } catch (err) {
